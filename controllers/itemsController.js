@@ -23,7 +23,7 @@ exports.getAllItems = (req, res) => {
 // Delete items
 exports.deleteItem = (req, res) => {
   const { item_id } = req.params;
-  db.query('DELETE FROM items WHERE id = ?', [item_id], (err) => {
+  db.query('DELETE FROM items WHERE id = ?', [item_id], (err, results) => {
     if (err) return res.status(500).json({error: err, message: 'DB Delete Item Error'});
     if (results.affectedRows === 0) {return res.status(404).json({ message: `Item ${item_id} not found` });}
     res.json({message: `Deleted Item ${item_id}`});
