@@ -5,9 +5,9 @@ exports.addPlayer = (req, res) => {
     const { session_id } = req.params;
     const { name, character } = req.body;
     const sql = 'INSERT INTO players (session_id, name, character_name, coins, stars) VALUES (?, ?, ?, 0, 0)';
-    db.query(sql, [session_id, name, character], (err, result) => {
+    db.query(sql, [session_id, name, character], (err, results) => {
         if (err) return res.status(500).json({error: err, message: 'DB Add Player Error'});
-        res.json({result: result, message: `Player ${name} added`});
+        res.json({results: results, message: `Player ${name} added`});
     });
 };
 
@@ -38,4 +38,13 @@ exports.updateStars = (req, res) => {
         if (err) return res.status(500).json({error: err, message: 'DB Update Stars Error'});
         res.json({message: `Updated Coins from Player ID ${id} to ${stars}`});
   });
+};
+
+// Delete player
+exports.deletePlayer = (req, res) => {
+    const { id } = req.params;
+    db.query('DELETE FROM players WHERE id = ?', [id], (err, results) => {
+        if (err) return res.status(500).json({error: err, message: 'DB Delete Player Error'});
+        res.json({results: results, message: `Player ${name} has been deleted`});
+    });
 };
