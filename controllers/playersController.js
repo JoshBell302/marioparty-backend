@@ -45,6 +45,6 @@ exports.deletePlayer = (req, res) => {
     const { id } = req.params;
     db.query('DELETE FROM players WHERE id = ?', [id], (err, results) => {
         if (err) return res.status(500).json({error: err, message: 'DB Delete Player Error'});
-        res.json({results: results, message: `Player ${name} has been deleted`});
+        res.json({results: results, message: `Player ${id} has been deleted`});
     });
 };
