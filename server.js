@@ -16,10 +16,12 @@ app.get("/", (req, res) => {
 // Route imports
 const playerRoutes = require('./routes/players');
 const itemRoutes = require('./routes/items');
+const sessionRoutes = require('./routes/sessions');
 
 // Use routes
 app.use('/api/players', playerRoutes);
 app.use('/api/items', itemRoutes);
+app.use('/api/sessions', sessionRoutes);
 
 
 app.listen(PORT, () => {
