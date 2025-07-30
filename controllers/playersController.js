@@ -42,9 +42,10 @@ exports.updateStars = (req, res) => {
 
 // Delete player
 exports.deletePlayer = (req, res) => {
-    const { id } = req.params;
-    db.query('DELETE FROM players WHERE id = ?', [id], (err, results) => {
+    const { player_id } = req.params;
+    db.query('DELETE FROM players WHERE id = ?', [player_id], (err, results) => {
         if (err) return res.status(500).json({error: err, message: 'DB Delete Player Error'});
+        if (results.affectedRows === 0) {return res.status(404).json({ message: `Player ${player_id} not found` });}
         res.json({results: results, message: `Player ${id} has been deleted`});
     });
 };
