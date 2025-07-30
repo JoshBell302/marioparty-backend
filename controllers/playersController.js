@@ -7,7 +7,7 @@ exports.addPlayer = (req, res) => {
     const sql = 'INSERT INTO players (session_id, name, character_name, coins, stars) VALUES (?, ?, ?, 0, 0)';
     db.query(sql, [session_id, name, character], (err, result) => {
         if (err) return res.status(500).json({error: err, message: 'DB Add Player Error'});
-        res.json({result: result, message: `Player ${name} added!`});
+        res.json({result: result, message: `Player ${name} added`});
     });
 };
 

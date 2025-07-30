@@ -16,7 +16,7 @@ exports.getAllItems = (req, res) => {
   const { session_id } = req.params;
   db.query('SELECT * FROM items WHERE session_id = ?', [session_id], (err, results) => {
     if (err) return res.status(500).json({error: err, message: 'DB Get All Items Error'});
-    res.json({ result: result});
+    res.json({ result: results});
   });
 };
 
