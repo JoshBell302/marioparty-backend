@@ -1,4 +1,4 @@
-const db = require('../db');
+const db = require('../database');
 
 // Add item
 exports.addItem = (req, res) => {
