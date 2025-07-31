@@ -35,7 +35,7 @@ exports.updateCoins = (req, res) => {
     console.log(`coins=${coins}`);
     db.query('UPDATE players SET coins = ? WHERE id = ?', [coins, player_id], (err) => {
         if (err) return res.status(500).json({error: err, message: 'DB Update Coins Error'});
-        res.json({message: `Updated Coins from Player ID ${id} to ${coins}`});
+        res.json({message: `Updated Coins from Player ID ${player_id} to ${coins}`});
   });
 };
 
@@ -48,7 +48,7 @@ exports.updateStars = (req, res) => {
     console.log(`stars=${stars}`);
     db.query('UPDATE players SET stars = ? WHERE id = ?', [stars, player_id], (err) => {
         if (err) return res.status(500).json({error: err, message: 'DB Update Stars Error'});
-        res.json({message: `Updated Coins from Player ID ${id} to ${stars}`});
+        res.json({message: `Updated Coins from Player ID ${player_id} to ${stars}`});
   });
 };
 
