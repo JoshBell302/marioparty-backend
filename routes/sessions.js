@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const controller = require('../controllers/itemsController');
+const controller = require('../controllers/sessionsController');
 
 router.post('/', controller.createSession);
 
